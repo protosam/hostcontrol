@@ -1,5 +1,5 @@
 # hostcontrol
-This is a webhosting control panel written in Go Lang.
+This is a webhosting control panel written in Go Lang. The project page with screenshots, compiled binary, and some more info can be found here: http://just.ninja/hostcontrol
   
 #### Get the source
 ```
