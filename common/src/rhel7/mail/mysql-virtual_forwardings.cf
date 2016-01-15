@@ -1,0 +1,5 @@
+user = hostcontrol
+password = __PASSWORD__
+dbname = hostcontrol
+query = SELECT destination FROM mail_forwardings WHERE source='%s'
+hosts = localhost

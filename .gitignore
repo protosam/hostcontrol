@@ -1,0 +1,4 @@
+build
+!build.sh
+assets.go
+settings.cfg

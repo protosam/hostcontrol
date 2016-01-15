@@ -1,0 +1,84 @@
+ABOUT
+mod_ruid2 is a suexec module for apache 2.0, 2.2 and 2.4, based on mod_ruid and mod_suid2
+
+-it runs only on Linux because only the Linux kernel has implemented the required process capabilities.
+-it has better performance than mod_suid2 because it doesn`t need to kill httpd children
+ after one request. it makes use of kernel capabilites and after receiving a new request suids again.
+-there are some security issues, for instance if attacker successfully exploits the httpd process,
+ he can set effective capabilities and setuid to root. i recommend to use some security patch in kernel (grsec),
+ or something..
+
+-there are two main operation modes: stat and config
+ 1. config
+ is default, you must define uid and gid. If no [ug]id is defined the default user and group are used.
+
+ 2. stat
+ httpd setuid and setgid to uid and gid of requested filename(script)/directory
+ this is good if you use mod_vhost_alias for virtual hosting
+
+INSTALL
+ 1. download and install latest libcap from here
+ 2. run /apachedir/bin/apxs -a -i -l cap -c mod_ruid2.c
+ 3. configure httpd.conf
+ 4. restart apache
+
+CONFIGURE OPTIONS:
+ RMode config|stat (default is config)
+ RUidGid user|#uid group|#gid - when RMode is config, set to this uid and gid
+
+ RMinUidGid user|#uid group|#gid - when uid/gid is < than min uid/gid set to default uid/gid
+ RDefaultUidGid user|#uid group|#gid
+
+ RGroups group1 group2 - additional groups set via setgroups
+ @none - clear all previous defined groups.
+
+ RDocumentChrRoot - Set chroot directory and the document root inside
+
+
+EXAMPLE:
+
+ LoadModule ruid2_module   modules/mod_ruid2.so
+ User                     apache
+ Group                    apache
+ RMode                    stat
+ RGroups                  apachetmp
+ RDocumentChRoot          /home /example.com/public_html
+
+ NameVirtualHost 192.168.0.1
+ <VirtualHost example.com>
+   ServerAdmin    webmaster@example.com
+   RDocumentChRoot /home /example.com/public_html
+   ServerName     example.com
+   ServerAlias    www.example.com
+   RMode          config		# unnecessary since config is the default
+   RUidGid        user1 group1
+   RGroups        apachetmp
+
+   <Directory /home/example.com/public_html/dir>
+       RMode stat
+   </Directory>
+
+   <Directory /home/example.com/public_html/dir/test>
+       RMode config
+       RUidGid user2 group2
+       RGroups groups1
+   </Directory>
+
+   <Directory /home/example.com/public_html/dir/test/123>
+       RUidGid user3 group3
+   </Directory>
+
+   <Location /yustadir>
+       RMode config
+       RUidGid user4 user4
+       RGroups groups4
+   </Location>
+
+ </VirtualHost>
+
+ <VirtualHost example.net>
+   ServerAdmin    webmaster@example.net
+   DocumentRoot   /home/example.net/public_html
+   ServerName     example.net
+   ServerAlias    www.example.net
+ </VirtualHost>

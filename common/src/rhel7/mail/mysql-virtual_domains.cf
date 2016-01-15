@@ -1,0 +1,5 @@
+user = hostcontrol
+password = __PASSWORD__
+dbname = hostcontrol
+query = SELECT domain AS virtual FROM mail_domains WHERE domain='%s'
+hosts = localhost

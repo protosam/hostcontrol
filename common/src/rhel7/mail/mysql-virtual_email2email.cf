@@ -1,0 +1,5 @@
+user = hostcontrol
+password = __PASSWORD__
+dbname = hostcontrol
+query = SELECT email FROM mail_users WHERE email='%s'
+hosts = localhost

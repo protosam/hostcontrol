@@ -1,0 +1,91 @@
+package routes
+
+import (
+	"fmt"
+	"gopkg.in/macaron.v1"
+	"encoding/json"
+	"github.com/protosam/vision"
+)
+
+
+func init(){
+	route("/test", test, "GET")
+	route("/mysqltest", mysqltest, "GET")
+	route("/jsontest", jsontest, "GET")
+	route("/visiontest", visiontest, "GET")
+	route("/visiontestdie", visiontestdie, "GET")
+}
+
+
+func visiontestdie(ctx *macaron.Context) (string) {
+	if true {
+		return die(ctx, "Some error here")
+	}
+
+	html := "Hello world"
+
+	return header(ctx) + html + footer(ctx)
+}
+
+
+
+func visiontest(ctx *macaron.Context) (string) {
+	var tpl vision.New
+
+	tpl.TemplateFile("template/index.tpl")
+	tpl.Parse("main")
+
+	return header(ctx) + html + footer(ctx)
+}
+
+func jsontest(ctx *macaron.Context) (string) {
+	data := make(map[string]string)
+
+	data["hello"] = "world"
+	data["name"] = "joe"
+	data["loggedin"] = "fuckoff"
+
+	output, err := json.Marshal(data)
+	if err != nil {
+		fmt.Println(err)
+		return "Failed data conversion"
+	}
+
+	return string(output)
+}
+
+func mysqltest(ctx *macaron.Context) (string) {
+
+	db, err := MySQL()
+
+	if err != nil {
+		return "Problem opening MySQL"
+	}
+
+
+	stmt, _ := db.Prepare("show tables")
+	rows, err := stmt.Query()
+
+	if err != nil {
+		fmt.Println(err)
+		return "Error running query."
+	}
+
+	for rows.Next() {
+		var tablename string
+		rows.Scan(&tablename)
+		fmt.Println(tablename)
+	}
+
+	db.Close()
+	return "Testing MySQL out"
+}
+
+
+func test(ctx *macaron.Context) (string) {
+	// send 400 response
+	//ctx.Resp.WriteHeader(400)
+	// Custom header named X-Testing with value of FOOBAR
+	//ctx.Resp.Header().Set("X-Testing", "FOOBAR")
+	return "Hello Testpage"
+}
