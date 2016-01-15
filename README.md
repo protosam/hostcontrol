@@ -4,7 +4,7 @@ This is a webhosting control panel written in Go Lang.
 #### Get the source
 mkdir -p $GOPATH/src/github.com/protosam
 cd $GOPATH/src/github.com/protosam
-git clone git@gitlab.just.ninja:samuelp/hostcontrol.git
+git clone git@github.com:protosam/hostcontrol.git
 cd hostcontrol
 go get
 ```
