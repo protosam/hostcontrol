@@ -12,6 +12,10 @@ if ! grep ^allow_writeable_chroot /etc/vsftpd/vsftpd.conf | grep YES; then
 	echo 'allow_writeable_chroot=YES' >> /etc/vsftpd/vsftpd.conf
 fi
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9d53418ae2d62b3d958bb6ac7612d652fafe70f6
 systemctl enable vsftpd
 
 if [ -f /var/lock/subsys/vsftpd ]; then
