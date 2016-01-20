@@ -4,6 +4,7 @@ import (
 	"gopkg.in/macaron.v1"
 	"github.com/protosam/vision"
 	"github.com/protosam/hostcontrol/util"
+	"strings"
 )
 
 func set_error(msg string, ctx *macaron.Context) {
@@ -18,12 +19,40 @@ func header(ctx *macaron.Context) (string) {
 	var tpl vision.New
         tpl.TemplateFile("template/overall.tpl")
 
-	user, auth := util.Auth(ctx, "any")
+	hcuser, auth := util.Auth(ctx, "any")
 	if auth {
-		tpl.Assign("username", user.System_username)
+		tpl.Assign("username", hcuser.System_username)
 	}
 
-        tpl.Parse("header")
+    tpl.Parse("header")
+
+
+    if auth {
+        if (strings.Contains(hcuser.Privileges, "websites") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
+            tpl.Parse("header/websitesbtn");
+        }
+        if strings.Contains(hcuser.Privileges, "databases") || strings.Contains(hcuser.Privileges, "all") {
+            tpl.Parse("header/databasesbtn");
+        }
+        if strings.Contains(hcuser.Privileges, "dns") || strings.Contains(hcuser.Privileges, "all") {
+            tpl.Parse("header/dnsbtn");
+        }
+        if (strings.Contains(hcuser.Privileges, "mail") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
+            tpl.Parse("header/mailbtn");
+        }
+        if (strings.Contains(hcuser.Privileges, "ftpusers") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
+            tpl.Parse("header/ftpusersbtn");
+        }
+        if strings.Contains(hcuser.Privileges, "all") {
+            tpl.Parse("header/firewallbtn");
+        }
+        if strings.Contains(hcuser.Privileges, "all") {
+            tpl.Parse("header/servicesbtn");
+        }
+        if strings.Contains(hcuser.Privileges, "sysusers") || strings.Contains(hcuser.Privileges, "all") {
+            tpl.Parse("header/usersbtn");
+        }
+    }
 
 
 	err_str := ctx.GetCookie("err_str")

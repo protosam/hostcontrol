@@ -3,7 +3,8 @@
 /* Padding below the footer and lighter body text */
 
 body {
-	padding-top:50px;
+    padding-top:0px;
+    margin-top: 0px;
 	padding-bottom: 40px;
 	color: #5a5a5a;
 	height: 100%;
@@ -13,6 +14,15 @@ html {
 	height: 100%;
 }
 
+.nopad {
+    padding:0px;
+    margin: 0px;
+}
+
+.pad5 {
+    padding-top:5px;
+    margin-top: 5px;
+}
 
 .normalize-text {
 	font-size: 14px;

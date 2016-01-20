@@ -25,35 +25,121 @@
 	<![endif]-->
 </head>
 <body>
-	<!-- begin navbar -->
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			<a class="navbar-brand" href="/dashboard"><span class="mega-octicon octicon-beaker"></span> Hostcontrol</a>
-			</div>
-			<!--.nav-collapse -->
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-				<!-- removed the left nav -->
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
+<div class="page-header row nopad">
+  <div class="pull-right normalize-text pad5">Logged in as {username} <a href="/logout"><span class="badge"><span class="octicon octicon-sign-out"></span> Logout</span></a></div>
+  <h1 class="pull-left nopad"><a href="/dashboard"><span class="mega-octicon octicon-beaker"></span> Hostcontrol</a></h1>
+</div>
 
-					<li><a>Logged in as {username}</a></li>
+<ul class="nav nav-pills">
+	<!-- BEGIN: websitesbtn -->
+	<li role="presentation">
+	    <a href="/websites">
+			<span class="octicon octicon-globe"></span>
+			<span class="normalize-text">Websites</span>
+	    </a>
+	</li>
+	<!-- END: websitesbtn -->
+	
+	<!-- BEGIN: databasesbtn -->
+	<li role="presentation">
+	    <a href="/databases">
+			<span class="octicon octicon-database"></span>
+			<span class="normalize-text">Databases</span>
+		</a>
+	</li>
+	<!-- END: databasesbtn -->
+	
+	<!-- BEGIN: dnsbtn -->
+	<li role="presentation">
+	    <a href="/dns">
+			<span class="octicon octicon-repo"></span>
+			<span class="normalize-text">DNS Records</span>
+		</a>
+	</li>
+	<!-- END: dnsbtn -->
+	
+	<!-- BEGIN: mailbtn -->
+	<li role="presentation">
+	    <a href="/mail">
+			<span class="octicon octicon-mail"></span>
+			<span class="normalize-text">Email</span>
+		</a>
+	</li>
+	<!-- END: mailbtn -->
+	
+	<!-- BEGIN: ftpusersbtn -->
+	<li role="presentation">
+	    <a href="/ftpusers">
+			<span class="octicon octicon-file-symlink-directory"></span>
+			<span class="normalize-text">FTP Users</span>
+    	</a>
+	</li>
+	<!-- END: ftpusersbtn -->
+	
+		
+	<!-- BUTTON -->
+	<li role="presentation">
+		<a href="/filemanager">
+			<span class="octicon octicon-file-directory"></span>
+			<span class="normalize-text">File Manager</span>
+		</a>
+	</li>
+	<!-- /BUTTON -->
 
-					<li><a href="/logout"><span class="badge"><span class="octicon octicon-sign-out"></span> Logout</span></a></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
-		</div>
-	</nav>
-	<!-- end navbar -->
 
+	<!-- BEGIN: firewallbtn -->
+	<li role="presentation">
+		<a href="/firewall">
+			<span class="octicon octicon-flame"></span>
+			<span class="normalize-text">Firewall</span>
+		</a>
+	</li>
+	<!-- END: firewallbtn -->
+
+	<!-- BUTTON -->
+	<li role="presentation">
+		<a href="{console_url}" target="_blank">
+			<span class="octicon octicon-terminal"></span>
+			<span class="normalize-text">Console</span>
+		</a>
+	</li>
+	<!-- /BUTTON -->
+	
+	<!-- BEGIN: servicesbtn -->
+	<li role="presentation">
+		<a href="/services">
+			<span class="octicon octicon-pulse"></span>
+			<span class="normalize-text">Services</span>
+		</a>
+	</li>
+	<!-- END: servicesbtn -->
+	
+	<!-- BEGIN: usersbtn -->
+	<li role="presentation">
+		<a href="/users">
+			<span class="octicon octicon-organization"></span>
+			<span class="normalize-text">Users</span>
+		</a>
+	</li>
+	<!-- END: usersbtn -->
+
+	<!-- BUTTON -->
+	<li role="presentation">
+		<a href="/settings">
+			<span class="octicon octicon-tools"></span>
+			<span class="normalize-text">Settings</span>
+		</a>
+	</li>
+	<!-- /BUTTON -->
+</ul>
+
+					
+					
+
+
+	
+	
+	
 	<!-- BEGIN: info -->
 	<p class="alert alert-success">{message}</p>
 	<!-- END: info -->

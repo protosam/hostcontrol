@@ -18,7 +18,8 @@ func init(){
 
 
 func dashboard(ctx *macaron.Context) (string){
-	hcuser, auth := util.Auth(ctx, "any")
+	//hcuser, auth := util.Auth(ctx, "any")
+	_, auth := util.Auth(ctx, "any")
 	if ! auth {
 		ctx.Redirect("/", 302)
 		return ""
@@ -37,30 +38,6 @@ func dashboard(ctx *macaron.Context) (string){
 
 	tpl.Parse("dashboard")
 
-    if (strings.Contains(hcuser.Privileges, "websites") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
-        tpl.Parse("dashboard/websitesbtn");
-    }
-    if strings.Contains(hcuser.Privileges, "databases") || strings.Contains(hcuser.Privileges, "all") {
-        tpl.Parse("dashboard/databasesbtn");
-    }
-    if strings.Contains(hcuser.Privileges, "dns") || strings.Contains(hcuser.Privileges, "all") {
-        tpl.Parse("dashboard/dnsbtn");
-    }
-    if (strings.Contains(hcuser.Privileges, "mail") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
-        tpl.Parse("dashboard/mailbtn");
-    }
-    if (strings.Contains(hcuser.Privileges, "ftpusers") || strings.Contains(hcuser.Privileges, "all")) && hcuser.System_username != "root" {
-        tpl.Parse("dashboard/ftpusersbtn");
-    }
-    if strings.Contains(hcuser.Privileges, "all") {
-        tpl.Parse("dashboard/firewallbtn");
-    }
-    if strings.Contains(hcuser.Privileges, "all") {
-        tpl.Parse("dashboard/servicesbtn");
-    }
-    if strings.Contains(hcuser.Privileges, "sysusers") || strings.Contains(hcuser.Privileges, "all") {
-        tpl.Parse("dashboard/usersbtn");
-    }
 	return header(ctx) + tpl.Out() + footer(ctx)
 }
 
