@@ -3,12 +3,13 @@
 	<h4>Editing file {current_path}</h4>
 </div>
 
-<div class="container fill">
+<div class="container">
 	<div id="editor">{filedata}</div>
 	<form method="post" action="/fileeditor?path={selected_path}" id="file">
 		<input type="hidden" name="filecontents" value="">
 	</form>
 </div>
+
 
 <div class="container">
 	<!-- BUTTON -->
