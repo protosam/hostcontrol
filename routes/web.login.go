@@ -5,7 +5,6 @@ import (
 	"gopkg.in/macaron.v1"
 	"github.com/protosam/vision"
 	"github.com/protosam/hostcontrol/util"
-	"strings"
 )
 
 
@@ -29,12 +28,6 @@ func dashboard(ctx *macaron.Context) (string){
 	var tpl vision.New
 	tpl.TemplateFile("template/dashboard.tpl")
 
-	hostname := string(ctx.Req.Header.Get("X-FORWARDED-HOST"))
-	if hostname == "" {
-		hostname = string(ctx.Req.Host)
-	}
-	hostname = strings.Split(hostname, ":")[0]
-	tpl.Assign("console_url", "https://"+hostname+"/shellinabox")
 
 	tpl.Parse("dashboard")
 

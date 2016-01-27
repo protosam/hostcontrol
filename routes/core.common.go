@@ -24,6 +24,13 @@ func header(ctx *macaron.Context) (string) {
 		tpl.Assign("username", hcuser.System_username)
 	}
 
+	hostname := string(ctx.Req.Header.Get("X-FORWARDED-HOST"))
+	if hostname == "" {
+		hostname = string(ctx.Req.Host)
+	}
+	hostname = strings.Split(hostname, ":")[0]
+
+	tpl.Assign("console_url", "https://"+hostname+"/shellinabox")
     tpl.Parse("header")
 
 

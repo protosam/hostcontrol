@@ -49,7 +49,7 @@ CREATE TABLE `domains` (
   `account` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_index` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `hostcontrol_ftpusers` (
   `system_username` varchar(32) NOT NULL,
   PRIMARY KEY (`ftpuser_id`),
   KEY `ftpusername` (`ftpusername`,`system_username`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +101,7 @@ CREATE TABLE `hostcontrol_user_tokens` (
   PRIMARY KEY (`token_id`),
   KEY `hostcontrol_id` (`hostcontrol_id`),
   CONSTRAINT `deleteuser` FOREIGN KEY (`hostcontrol_id`) REFERENCES `hostcontrol_users` (`hostcontrol_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `hostcontrol_users` (
   PRIMARY KEY (`hostcontrol_id`),
   KEY `owned_by` (`owned_by`),
   KEY `system_username` (`system_username`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +139,7 @@ CREATE TABLE `mail_domains` (
   UNIQUE KEY `domain_2` (`domain`),
   KEY `domain` (`domain`),
   KEY `system_username` (`system_username`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -192,7 +192,7 @@ CREATE TABLE `mail_users` (
   KEY `domain` (`domain`),
   KEY `email` (`email`),
   CONSTRAINT `mail_users_ibfk_1` FOREIGN KEY (`domain`) REFERENCES `mail_domains` (`domain`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +219,7 @@ CREATE TABLE `records` (
   KEY `domain_id` (`domain_id`),
   KEY `recordorder` (`domain_id`,`ordername`),
   CONSTRAINT `records_ibfk_1` FOREIGN KEY (`domain_id`) REFERENCES `domains` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +242,7 @@ CREATE TABLE `website_vhosts` (
   PRIMARY KEY (`vhost_id`),
   KEY `domain` (`domain`),
   KEY `system_username` (`system_username`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -254,4 +254,4 @@ CREATE TABLE `website_vhosts` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-20 10:11:28
+-- Dump completed on 2016-01-27 23:22:36
