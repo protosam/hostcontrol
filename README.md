@@ -1,6 +1,14 @@
 # hostcontrol
 This is a webhosting control panel written in Go Lang. The project page with screenshots, compiled binary, and some more info can be found here: http://just.ninja/hostcontrol
   
+#### Prepare your RedHat 7/CentOS 7 server before hand
+We need these packages to get the source.
+```
+yum install golang git -y
+echo 'export GOPATH=$HOME/go' >> ~/.bashrc
+```
+
+
 #### Get the source
 ```
 mkdir -p $GOPATH/src/github.com/protosam
