@@ -152,7 +152,7 @@
 		<hr class="featurette-divider">
 		<footer>
 			<p class="pull-right"><a href="#">Back to top</a></p>
-			<p><a href="http://just.ninja">Powered by Just.Ninja</a> &middot; Fireworks Release
+			<p>Fireworks Release
 		</footer>
 	</div>
 
