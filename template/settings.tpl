@@ -83,7 +83,12 @@
 
 	<h3>API Calls</h3>
 	<p>Below are the availabel API calls.</p>
-	
+
+    <h4></h4>
+    <p>To use your token against the API, you must add the parameter <code>api_token=##/###TOKEN###STRING###</code> via the request query string or post data. Below are two examples with curl.</p>
+    <p><code>curl --data "api_token=api_token=##/###TOKEN###STRING###" https://SERVER_IP_HERE/api/users/list</code></p>
+    <p><code>curl https://SERVER_IP_HERE/api/users/list?api_token=api_token=##/###TOKEN###STRING###</code></p>
+    
     <h4>Systems Info</h4>
     <p>These API calls will return information about the server ecosystem.</p>
     
