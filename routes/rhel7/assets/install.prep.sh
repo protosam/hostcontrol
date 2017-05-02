@@ -28,7 +28,7 @@ yum -y install \
 vim gcc gcc-c++ make autoconf yum-plugin-replace pam-devel \
 httpd httpd-devel libcap-devel mod_ssl \
 mariadb-server phpmyadmin \
-php php-devel php-fpm php-mysql php-gd php-mcrypt php-xmlrpc php-xml php-mbstring php-pear \
+php php-devel php-fpm php-mysqlnd php-gd php-mcrypt php-xmlrpc php-xml php-mbstring php-pear \
 pdns pdns-backend-mysql bind-utils \
 postfix dovecot dovecot-mysql roundcubemail \
 vsftpd \
