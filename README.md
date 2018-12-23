@@ -1,3 +1,6 @@
+# THIS REPO IS NO LONGER MAINTAINED
+Sorry about that, I've not had time to work on this in a very long time. If you need a cPanel alternative that's free, I'd recommend checking out CyberPanel: https://cyberpanel.net/
+
 # hostcontrol
 This is a webhosting control panel written in Go Lang. The project page with screenshots, compiled binary, and some more info can be found here: http://just.ninja/hostcontrol
   
